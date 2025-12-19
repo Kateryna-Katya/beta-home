@@ -230,3 +230,259 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
       display: none; /* Спрячем кнопку в мобильной версии как обсуждали ранее */
   }
 }
+/* --- СЕКЦИИ --- */
+section { padding: 100px 0; border-bottom: var(--border-main); }
+.grid { display: grid; gap: 30px; }
+.grid--2 { grid-template-columns: 1fr 1fr; }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.section-title { font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 40px; text-transform: uppercase; }
+.section-title.center { text-align: center; }
+
+/* HERO */
+.hero { background: var(--color-accent); min-height: 80vh; display: flex; align-items: center; border-bottom: var(--border-main); }
+.hero__badge { display: inline-block; background: #000; color: #fff; padding: 5px 15px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
+.hero__title { font-size: clamp(40px, 8vw, 80px); line-height: 0.9; margin-bottom: 30px; }
+.hero__subtitle { font-size: 20px; max-width: 600px; margin-bottom: 40px; }
+.btn--lg { padding: 20px 40px; font-size: 18px; }
+.btn--white { background: #fff; }
+
+/* MARQUEE */
+.marquee { background: #000; color: #fff; padding: 20px 0; overflow: hidden; white-space: nowrap; }
+.marquee__inner { display: inline-block; animation: marquee 20s linear infinite; font-weight: 700; font-size: 20px; text-transform: uppercase; }
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* CARDS */
+.card { padding: 40px; border: var(--border-main); box-shadow: var(--shadow-main); background: #fff; transition: var(--transition); }
+.card:hover { transform: translate(-5px, -5px); box-shadow: 10px 10px 0px #000; background: var(--color-accent); }
+.card__icon { width: 60px; height: 60px; background: var(--color-accent); border: 2px solid #000; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+.card:hover .card__icon { background: #fff; }
+
+/* FORM */
+.contact__container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.contact__form { background: #fff; border: var(--border-main); padding: 40px; box-shadow: var(--shadow-main); }
+.input { width: 100%; padding: 15px; border: var(--border-main); font-family: inherit; font-size: 16px; margin-bottom: 20px; outline: none; }
+.input:focus { background: var(--color-accent); }
+.checkbox-label { display: flex; gap: 10px; font-size: 14px; margin-bottom: 20px; cursor: pointer; }
+.btn--full { width: 100%; justify-content: center; }
+
+/* COOKIE POPUP */
+.cookie-popup { position: fixed; bottom: 30px; left: 30px; right: 30px; z-index: 9999; display: none; }
+.cookie-popup__content { background: #fff; border: var(--border-main); box-shadow: 10px 10px 0px #000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+
+/* ADAPTIVE */
+@media (max-width: 768px) {
+    .grid--2, .grid--3, .contact__container { grid-template-columns: 1fr; }
+    .hero { text-align: center; }
+    .hero__actions { flex-direction: column; }
+    .cookie-popup__content { flex-direction: column; text-align: center; }
+}
+/* --- МОБИЛЬНОЕ МЕНЮ --- */
+@media (max-width: 768px) {
+  .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: var(--color-accent);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+      border-left: var(--border-main);
+  }
+
+  .nav--active {
+      right: 0;
+  }
+
+  .nav__list {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+  }
+
+  .nav__link {
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+  }
+}
+
+/* --- ПРОГРАММЫ --- */
+.program-card {
+  background: #fff;
+  border: var(--border-main);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-main);
+}
+
+.program-card.featured {
+  background: var(--color-accent);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.program-card__tag {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  border: 2px solid #000;
+  padding: 2px 8px;
+  width: fit-content;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.program-card__title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.program-card__price {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 30px 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* --- СТИЛИЗАЦИЯ БЛОГА --- */
+.blog-card {
+  background: #fff;
+  border: var(--border-main);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.blog-card:hover {
+  box-shadow: 12px 12px 0px var(--color-accent);
+  transform: translate(-5px, -5px);
+}
+
+.blog-card__date {
+  background: #000;
+  color: #fff;
+  padding: 5px 15px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.blog-card__content {
+  padding: 30px;
+}
+
+.blog-card__title {
+  font-size: 24px;
+  margin: 15px 0;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.blog-card__link {
+  margin-top: auto;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+/* --- СТИЛИЗАЦИЯ ИЗОБРАЖЕНИЯ В ABOUT --- */
+
+/* Обертка для изображения - контейнер для слоев */
+.about__image-wrapper {
+  position: relative;
+  /* Отступы справа и снизу, чтобы компенсировать смещение слоев */
+  margin-right: 30px;
+  margin-bottom: 30px;
+  /* Чтобы слои не перекрывали соседний контент на мобильных */
+  z-index: 1;
+}
+
+/* Само изображение (Верхний слой) */
+.brutal-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: var(--border-main); /* Стандартная рамка 3px */
+  position: relative;
+  z-index: 10; /* Лежит выше всех */
+  background: #fff; /* Фон на случай прозрачных PNG */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Небольшой начальный наклон для динамики */
+  transform: rotate(-2deg);
+}
+
+/* Создаем псевдоэлементы для "теневых" слоев */
+.about__image-wrapper::before,
+.about__image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: var(--border-main);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Самый нижний слой (Кислотно-желтый) */
+.about__image-wrapper::before {
+  background: var(--color-accent);
+  /* Самое большое смещение */
+  transform: translate(25px, 25px) rotate(2deg);
+  z-index: 5;
+}
+
+/* Средний слой (Черный) */
+.about__image-wrapper::after {
+  background: #000;
+  /* Среднее смещение */
+  transform: translate(12px, 12px) rotate(0deg);
+  z-index: 8;
+}
+
+/* --- HOVER ЭФФЕКТ --- */
+/* При наведении на обертку, слои "схлопываются" и изображение выпрямляется */
+
+.about__image-wrapper:hover .brutal-img {
+  /* Изображение немного приподнимается и выравнивается */
+  transform: translate(-5px, -5px) rotate(0deg);
+}
+
+.about__image-wrapper:hover::after {
+  /* Черный слой почти догоняет изображение */
+  transform: translate(2px, 2px) rotate(0deg);
+}
+
+.about__image-wrapper:hover::before {
+  /* Желтый слой становится плотной тенью */
+  transform: translate(8px, 8px) rotate(0deg);
+}
+
+/* --- ADAPTIVE FIX --- */
+@media (max-width: 768px) {
+  .about__image-wrapper {
+      /* На мобильных уменьшаем отступы, чтобы не тратить место */
+      margin-right: 15px;
+      margin-bottom: 25px;
+      margin-top: 30px; /* Добавим отступ сверху от текста */
+  }
+  /* Уменьшаем смещение слоев на мобильных */
+  .about__image-wrapper::before { transform: translate(15px, 15px) rotate(1deg); }
+  .about__image-wrapper::after { transform: translate(7px, 7px) rotate(0deg); }
+}
